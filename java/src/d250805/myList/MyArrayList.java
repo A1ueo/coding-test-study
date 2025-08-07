@@ -30,11 +30,11 @@ public class MyArrayList<E> implements MyList<E> {
 
 	private Object[] grow(int minCapacity) {
 		int oldCapacity = elementData.length;
+		
 		if (oldCapacity > 0 || elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA) {
-			int newCapacity = (oldCapacity + (oldCapacity >> 1) > SOFT_MAX_ARRAY_LENGTH ? 
-				oldCapacity + 1 : oldCapacity + (oldCapacity >> 1));
+			int prefLength = oldCapacity + Math.max(minCapacity - oldCapacity, (oldCapacity >> 1));
 
-			return elementData = Arrays.copyOf(elementData, newCapacity);
+			return elementData = Arrays.copyOf(elementData, prefLength);
 		} else {
 			return elementData = new Object[Math.max(DEFAULT_CAPACITY, minCapacity)];
 		}
