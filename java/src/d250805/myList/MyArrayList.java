@@ -180,4 +180,12 @@ public class MyArrayList<E> implements MyList<E> {
 		return oldValue;
     }
 	
+	// ArrayList에서 정의한 메서드
+	public void trimeToSize() {
+		if (size < elementData.length) {
+			elementData = (size == 0)
+				? EMPTY_ELEMENTDATA
+				: Arrays.copyOf(elementData, size);
+		}
+	}
 }
