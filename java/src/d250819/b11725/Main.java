@@ -3,6 +3,10 @@ package d250819.b11725;
 import java.io.*;
 import java.util.*;
 
+/* 트리의 부모 찾기
+ * 첫째 줄에 노드의 개수 N (2 ≤ N ≤ 100,000)이 주어진다.
+ * 둘째 줄부터 N-1개의 줄에 트리 상에서 연결된 두 정점이 주어진다.
+ */
 public class Main {
 
 	static Map<String, Set<String>> map;
@@ -13,9 +17,9 @@ public class Main {
 
 		int n = Integer.parseInt(br.readLine());
 
-		map = new HashMap<>(n);
+		map = new HashMap<String, Set<String>>(n);
 		for (int i = 1; i <= n; i++) map.put(String.valueOf(i), new HashSet<>());
-		
+		// 누가 부모인지 모르기 때문에, 서로의 set에 넣음
 		for (int i = 0; i < n - 1; i++) {
 			String[] tmp = br.readLine().split(" ");
 			
@@ -23,7 +27,8 @@ public class Main {
 			map.get(tmp[1]).add(tmp[0]);
 		}
 		
-		result = new HashMap<>(n);
+		result = new HashMap<String, String>(n);
+		// 루트 다음부터 시작해서 부모 번호를 result에 넣고 set에서 지움
 		method("1");
 
 		StringBuilder sb = new StringBuilder();

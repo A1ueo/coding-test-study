@@ -23,36 +23,9 @@ class Node {
 	Node left;
 	Node right;
 
-    public Node() {
-    }
-
-    public Node(String str) {
-        this.value = Integer.parseInt(str);
-    }
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + value;
-		return result;
+	public Node(String str) {
+		this.value = Integer.parseInt(str);
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Node other = (Node) obj;
-		if (value != other.value)
-			return false;
-		return true;
-	}
-
-	
 }
 
 class Tree {
@@ -82,9 +55,7 @@ class Tree {
 
 	void postOrder(Node curr) {
 		if (curr.left != null) postOrder(curr.left);
-		
 		if (curr.right != null) postOrder(curr.right);
-
 		sb.append(curr.value + "\n");
 	}
 }
