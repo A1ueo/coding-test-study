@@ -28,7 +28,7 @@ public class Main {
 		}
 		
 		result = new HashMap<String, String>(n);
-		// 루트 다음부터 시작해서 부모 번호를 result에 넣고 set에서 지움
+		// 부모 번호를 result에 넣고 set에서 지움
 		method("1");
 
 		StringBuilder sb = new StringBuilder();
