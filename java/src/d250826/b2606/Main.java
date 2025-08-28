@@ -36,7 +36,7 @@ public class Main {
 		}
 
 		// 감염된 객체들을 담을 set
-		set = new LinkedHashSet<String>();
+		set = new HashSet<String>();
 		set.add("1");
 		method("1");
 
