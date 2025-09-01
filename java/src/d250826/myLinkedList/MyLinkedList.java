@@ -42,25 +42,22 @@ public class MyLinkedList<E> implements MyList<E> {
 	public void add(int index, E element) {
 		if (index < 0  || index > size)	throw new IllegalArgumentException();
 
-		Node tmp;
 		if (index == 0) {
-			tmp = root;
+			Node tmp = root;
 			root = new Node(element);
 			root.next = tmp;
 			size++;
+		} else if (index == size) {
+			add(element);
 		} else {
 			Node curr = root;
 			for (int i = 0; i < index - 1; i++) {
 				curr = curr.next;
 			}
-			tmp = curr.next;
+			Node tmp = curr.next;
 			curr.next = new Node(element);
 			curr.next.next = tmp;
 			size++;
-		}
-
-		if (index == size) {
-			pointer = tmp;
 		}
 	}
 
@@ -68,6 +65,7 @@ public class MyLinkedList<E> implements MyList<E> {
 	public void clear() {
 		root = null;
 		pointer = null;
+		size = 0;
 	}
 
 	@Override
@@ -110,28 +108,34 @@ public class MyLinkedList<E> implements MyList<E> {
 	@Override
 	public int lastIndexOf(Object o) {
 		Node curr = root;
-		for (int i = size - 1; i >= 0; i--) {
-			if (Objects.equals(curr.value, o)) return i;
+		int index = -1;
+		for (int i = 0; i < size; i++) {
+			if (Objects.equals(curr.value, o)) index = i;
 			curr = curr.next;
 		}
 
-		return -1;
+		return index;
 	}
 
 	@Override
 	public boolean remove(Object o) {
 		Node curr = root;
-		Node prev = null;
+		Node prev = root;
 
 		for (int i = 0; i < size; i++) {
 			if (Objects.equals(curr.value, o)) {
-				Node tmp = curr.next;
-				prev.next = tmp;
+				if (i == 0) {
+					root = curr.next;
+					size--;
+				} else {
+					prev.next = curr.next;
+					this.size--;
+				}
 
 				return true;
 			}
-			curr = curr.next;
 			prev = curr;
+			curr = curr.next;
 		}
 
 		return false;
@@ -141,6 +145,13 @@ public class MyLinkedList<E> implements MyList<E> {
 	public E remove(int index) {
 		Node curr = root;
 		Node prev = root;
+
+		if (index == 0) {
+			Node tmp = root;
+			root = curr.next;
+			size--;
+			return tmp.value;
+		}
 
 		for (int i = 0; i < index; i++) {
 			prev = curr;
@@ -171,4 +182,3 @@ public class MyLinkedList<E> implements MyList<E> {
 	}
 
 }
-
