@@ -3,7 +3,13 @@ package d250826.b1260;
 import java.io.*;
 import java.util.*;
 
-
+/* DFS와 BFS
+ * 첫째 줄에 정점의 개수 N(1 ≤ N ≤ 1,000), 간선의 개수 M(1 ≤ M ≤ 10,000),
+ * 탐색을 시작할 정점의 번호 V가 주어진다.
+ * 다음 M개의 줄에는 간선이 연결하는 두 정점의 번호가 주어진다.
+ * 어떤 두 정점 사이에 여러 개의 간선이 있을 수 있다.
+ * 입력으로 주어지는 간선은 양방향이다.
+ */
 public class Main {
 	
 	static HashMap<Integer, Set<Integer>> map;	// 입력을 저장할 Map
@@ -11,13 +17,6 @@ public class Main {
 	static StringBuilder bfsStr;
 	static Queue<Integer> que;	// BFS 순서를 저장할 Queue
 
-	/* DFS와 BFS
-	 * 첫째 줄에 정점의 개수 N(1 ≤ N ≤ 1,000), 간선의 개수 M(1 ≤ M ≤ 10,000),
-	 * 탐색을 시작할 정점의 번호 V가 주어진다.
-	 * 다음 M개의 줄에는 간선이 연결하는 두 정점의 번호가 주어진다.
-	 * 어떤 두 정점 사이에 여러 개의 간선이 있을 수 있다.
-	 * 입력으로 주어지는 간선은 양방향이다.
-	 */
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
