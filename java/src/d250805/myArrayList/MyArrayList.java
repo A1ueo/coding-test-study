@@ -1,4 +1,4 @@
-package d250805.myList;
+package d250805.myArrayList;
 
 import java.util.Arrays;
 import java.util.Objects;
